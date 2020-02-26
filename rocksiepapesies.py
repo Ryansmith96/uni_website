@@ -3,30 +3,18 @@ import random
 
 
 # values and scores 
-#userguess = str(input("rock, paper, scissors:  "))
-#computerand = randint(0,2)
 computerguess = ""
 userscore = 0
 computerscore = 0
 computerlist = ["rock", "paper", "scissors"]
-
-#computerand = randint(0,2)
-#if computerand == 0:
-#    computerguess = "rock"
-#if computerand == 1:
-#    computerguess = "paper"
-#if computerand == 2:
-#    computerguess = "scissors" 
-
-
 computerguess = random.choice(computerlist)
-
+game = True 
 
   
 
 # the game
-while computerscore < 3 and userscore < 3:
-    userguess = str(input("rock, paper, scissors:  "))
+while game == True:
+    userguess = str(input("rock, paper, scissors (press q to quit):  "))
     if userguess == "rock" and computerguess == "rock":
         print("Computer also played rock: Tie") 
         print("Your score is: " + str(userscore)) 
@@ -78,13 +66,13 @@ while computerscore < 3 and userscore < 3:
         print("Your score is: " + str(userscore)) 
         print("Computer score is: " + str(computerscore))
         computerguess = random.choice(computerlist)
-    elif userguess != "rock" or "paper" or "scissors":
-        print("Please enter rock, paper, or scissors (no caps no spaces)")
-
-
-
-
-if userscore == 3:
-    print("Congrats you won!")
-elif computerscore == 3:
-    print("You lost to a machine :(")
+    elif userguess == "q":
+        game = False
+    elif userguess != "rock" or "paper" or "scissors" or "q":
+        print("Please enter rock, paper, or scissors (no caps no spaces)") 
+    if userscore == 3:
+        game = False 
+        print("Congrats you won!")
+    elif computerscore == 3:
+        game = False
+        print("You lost to a machine :(")
